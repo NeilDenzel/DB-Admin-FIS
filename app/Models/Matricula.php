@@ -10,6 +10,7 @@ class Matricula extends Model
 {
     protected $table = 'matricula';
     protected $primaryKey = 'id_matricula';
+    protected $guarded = [];
 
     const CREATED_AT = 'fecha_matricula';
     const UPDATED_AT = null;

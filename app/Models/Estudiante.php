@@ -13,6 +13,8 @@ class Estudiante extends Model
     protected $keyType = 'string';
     public $incrementing = false;
 
+    protected $guarded = [];
+
     const CREATED_AT = 'fecha_registro';
     const UPDATED_AT = null;
 

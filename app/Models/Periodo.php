@@ -9,6 +9,7 @@ class Periodo extends Model
 {
     protected $table = 'periodo';
     protected $primaryKey = 'id_periodo';
+    protected $guarded = [];
     public $timestamps = false;
 
     /** @return HasMany<Matricula, $this> */

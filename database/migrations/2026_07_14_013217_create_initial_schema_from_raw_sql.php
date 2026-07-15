@@ -25,6 +25,12 @@ return new class extends Migration
         if (file_exists($dmlPath)) {
             DB::connection('mysql')->unprepared(file_get_contents($dmlPath));
         }
+
+        // 4. Ejecutar triggers y stored procedures
+        $spPath = database_path('sql/03_triggers_and_procedures.sql');
+        if (file_exists($spPath)) {
+            DB::connection('mysql')->unprepared(file_get_contents($spPath));
+        }
     }
 
     public function down(): void

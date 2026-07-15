@@ -72,7 +72,7 @@ DEFAULT CHARACTER SET = utf8mb4;
 -- Table `estudiante`
 -- ---------------------------------------------------------
 CREATE TABLE IF NOT EXISTS `estudiante` (
-  `cod_estudiante` CHAR(10) NOT NULL,
+  `cod_estudiante` VARCHAR(11) NOT NULL,
   `dni` CHAR(8) NOT NULL,
   `nombres` VARCHAR(80) NOT NULL,
   `apellidos` VARCHAR(80) NOT NULL,
@@ -110,7 +110,7 @@ DEFAULT CHARACTER SET = utf8mb4;
 -- ---------------------------------------------------------
 CREATE TABLE IF NOT EXISTS `situacion_academica` (
   `id_situacion` INT NOT NULL AUTO_INCREMENT,
-  `cod_estudiante` CHAR(10) NOT NULL,
+  `cod_estudiante` VARCHAR(11) NOT NULL,
   `cod_curso` VARCHAR(15) NOT NULL,
   `id_estado` INT NOT NULL,
   `desea_llevar` ENUM('Si', 'No') NULL,
@@ -161,7 +161,7 @@ DEFAULT CHARACTER SET = utf8mb4;
 -- ---------------------------------------------------------
 CREATE TABLE IF NOT EXISTS `matricula` (
   `id_matricula` INT NOT NULL AUTO_INCREMENT,
-  `cod_estudiante` CHAR(10) NOT NULL,
+  `cod_estudiante` VARCHAR(11) NOT NULL,
   `id_periodo` INT NOT NULL,
   `fecha_matricula` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `estado` ENUM('Matriculado', 'Reservado', 'Retirado') NOT NULL DEFAULT 'Matriculado',

@@ -9,6 +9,7 @@ class DetalleMatricula extends Model
 {
     protected $table = 'detalle_matricula';
     protected $primaryKey = 'id_detalle';
+    protected $guarded = [];
     public $timestamps = false;
 
     /** @return BelongsTo<Matricula, $this> */

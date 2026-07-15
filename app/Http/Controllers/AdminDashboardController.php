@@ -8,22 +8,13 @@ class AdminDashboardController extends Controller
 {
     public function index()
     {
-        $cursos = DB::table('curso')
-            ->join('situacion_academica', 'curso.cod_curso', '=', 'situacion_academica.cod_curso')
-            ->where(function ($q) {
-                $q->where('situacion_academica.desea_llevar', '=', 'Si')
-                  ->orWhereIn('situacion_academica.id_estado', [2, 4]);
-            })
-            ->select(
-                'curso.cod_curso',
-                'curso.nombre',
-                'curso.ciclo',
-                DB::raw('COUNT(situacion_academica.cod_estudiante) as total_interesados')
-            )
-            ->groupBy('curso.cod_curso', 'curso.nombre', 'curso.ciclo')
-            ->orderByDesc('total_interesados')
-            ->get();
+        $totalEstudiantes = DB::table('estudiante')->count();
+        $totalCursos = DB::table('curso')->count();
+        $totalMallas = DB::table('malla')->count();
+        $totalRezago = DB::selectOne('SELECT COUNT(*) AS total FROM vw_EstudiantesRezago')->total;
 
-        return view('admin.dashboard', compact('cursos'));
+        return view('admin.dashboard', compact(
+            'totalEstudiantes', 'totalCursos', 'totalMallas', 'totalRezago'
+        ));
     }
 }
